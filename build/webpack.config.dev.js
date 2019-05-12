@@ -17,6 +17,10 @@ module.exports = {
         use: 'vue-loader'
       },
       {
+        test: /\.js$/,
+        use: 'babel-loader'
+      },
+      {
         test: /\.css$/,
         use: [
           'vue-style-loader',
@@ -30,6 +34,11 @@ module.exports = {
           'css-loader',
           'stylus-loader'
         ]
+      },
+      {
+        test: /\.(js|vue)$/,
+        use: 'eslint-loader',
+        enforce: 'pre'
       }
     ]
   },
