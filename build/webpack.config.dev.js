@@ -10,12 +10,6 @@ module.exports = {
   entry: [
     './src/app.js'
   ],
-  devServer: {
-    hot: true,
-    watchOptions: {
-      poll: true
-    }
-  },
   module: {
     rules: [
       {
@@ -40,7 +34,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
