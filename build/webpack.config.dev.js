@@ -2,6 +2,7 @@
 const webpack = require('webpack')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
 
 
 module.exports = {
@@ -10,6 +11,14 @@ module.exports = {
   entry: [
     './src/app.js'
   ],
+  devServer: {
+    historyApiFallback: true
+  },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  },
   module: {
     rules: [
       {
