@@ -60,47 +60,6 @@ export default {
   margin-left: 405px;
   margin-top: 25px;
 }
-.dot {
-  height: 225px;
-  width: 225px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  margin-left: 404px
-}
-.circle-content {
-  position: relative;
-  top: 100px;
-  left: 29px;
-  color: white;
-  font-weight: bold;
-}
-.top-left-arrow {
-  position: relative;
-  left: 394px;
-}
-.fa-rotate-315 {
-    transform: rotate(315deg);
-}
-.bottom-left-arrow {
-    position: relative;
-    top: 188px;
-    left: 380px;
-}
-
-.fa-rotate-225 {
-    transform: rotate(225deg);
-}
-.fa-rotate-45 {
-    transform: rotate(45deg);
-}
-.fa-rotate-135 {
-  transform: rotate(135deg);
-}
-.bottom-right-arrow{
-    position: relative;
-    top: 190px;
-}
 .arrow-pos-left {
     margin-left: 673px;
     margin-top: 25px;
