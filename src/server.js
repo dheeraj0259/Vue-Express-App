@@ -4,7 +4,7 @@ const path = require('path')
 var history = require('connect-history-api-fallback')
 
 const app = express()
-const port = 3008
+const port = 3009
 const hostname = process.env.NODE_ENV === 'production' ? undefined : '127.0.0.1'
 const appBaseUrl = '/vue-express'
 
