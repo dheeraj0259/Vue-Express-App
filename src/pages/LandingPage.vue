@@ -19,15 +19,13 @@
         </v-card-text>
       </v-card>
     </v-hover>
+    <i class="fas fa-arrow-down arrow-pos-left" />
+    <i class="fas fa-arrow-down arrow-pos-right" />
     <div class="child-class">
       <ManageAttribute
         card-one-name="Manage Attributes"
         card-two-name="View Candidates"
       />
-      <i class="fas fa-arrow-up fa-rotate-315 top-left-arrow" />
-       <div class="dot">
-         <span class="circle-content">Purpose of the application</span>
-       </div>
       <ManageAttribute
         card-one-name="Add Candidates"
         card-two-name="View Candidates1"
@@ -60,7 +58,7 @@ export default {
 }
 .child-class {
   margin-left: 405px;
-  margin-top: 50px;
+  margin-top: 25px;
 }
 .dot {
   height: 225px;
@@ -68,22 +66,46 @@ export default {
   background-color: #bbb;
   border-radius: 50%;
   display: inline-block;
-  margin-left: 445px
+  margin-left: 404px
 }
 .circle-content {
   position: relative;
   top: 100px;
   left: 29px;
+  color: white;
+  font-weight: bold;
 }
 .top-left-arrow {
   position: relative;
-  left: 420px;
+  left: 394px;
 }
 .fa-rotate-315 {
-    -webkit-transform: rotate(315deg);
-    -moz-transform: rotate(315deg);
-    -ms-transform: rotate(315deg);
-    -o-transform: rotate(315deg);
     transform: rotate(315deg);
+}
+.bottom-left-arrow {
+    position: relative;
+    top: 188px;
+    left: 380px;
+}
+
+.fa-rotate-225 {
+    transform: rotate(225deg);
+}
+.fa-rotate-45 {
+    transform: rotate(45deg);
+}
+.fa-rotate-135 {
+  transform: rotate(135deg);
+}
+.bottom-right-arrow{
+    position: relative;
+    top: 190px;
+}
+.arrow-pos-left {
+    margin-left: 673px;
+    margin-top: 25px;
+}
+.arrow-pos-right {
+  margin-left: 532px;
 }
 </style>
