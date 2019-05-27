@@ -30,26 +30,7 @@ export default {
 </script>
 
 <style>
-.v-card--reveal {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  opacity: 0.5;
-  position: absolute;
-  width: 100%;
-}
 .main-card {
   margin-top: 76px;
-}
-.child-class {
-  margin-left: 405px;
-  margin-top: 25px;
-}
-.arrow-pos-left {
-    margin-left: 673px;
-    margin-top: 25px;
-}
-.arrow-pos-right {
-  margin-left: 532px;
 }
 </style>
