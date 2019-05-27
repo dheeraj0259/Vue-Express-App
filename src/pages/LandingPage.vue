@@ -7,40 +7,25 @@
         max-width="600"
       >
         <v-card-text
-          class="pt-4"
+          class="pt-4 font-weight-light grey--text title"
           style="position: relative;"
         >
-          <div class="font-weight-light grey--text title mb-2">
             Application Name:
-          </div>
-          <h3 class="display-1 font-weight-light orange--text mb-2">
-            Commercial Attribute Management
-          </h3>
         </v-card-text>
+          <v-card-text
+          class="pt-4 display-1 font-weight-light orange--text txt"
+          style="position: relative;"
+        >
+        Commercial Attribute Management
+          </v-card-text>
       </v-card>
     </v-hover>
-    <i class="fas fa-arrow-down arrow-pos-left" />
-    <i class="fas fa-arrow-down arrow-pos-right" />
-    <div class="child-class">
-      <ManageAttribute
-        card-one-name="Manage Attributes"
-        card-two-name="View Candidates"
-      />
-      <ManageAttribute
-        card-one-name="Add Candidates"
-        card-two-name="View Candidates1"
-      />
-    </div>
   </div>
 </template>
 
 <script>
-import ManageAttribute from '../components/ManageAttribute.vue'
 export default {
   name: 'LandingPage',
-  components: {
-    ManageAttribute
-  }
 }
 </script>
 
