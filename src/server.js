@@ -4,7 +4,7 @@ const path = require('path')
 var history = require('connect-history-api-fallback')
 
 const app = express()
-const port = 3009
+const port = 3006
 const hostname = process.env.NODE_ENV === 'production' ? undefined : '127.0.0.1'
 const appBaseUrl = '/vue-express'
 
@@ -22,9 +22,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(compression())
-app.use(history({
-  index: 'index.html'
-}))
+app.use(history())
 app.use(`${appBaseUrl}`, express.static('./dist'))
 app.use('/*', (err, req, res, next) => {
   console.error(err.stack)
@@ -32,7 +30,7 @@ app.use('/*', (err, req, res, next) => {
 })
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '/./index.html'))
+  res.sendFile(path.join(__dirname + '/../index.html'))
 })
 
 const server = app.listen(port, hostname, () => {

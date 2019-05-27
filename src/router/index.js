@@ -9,6 +9,9 @@ const BarView = { template: '<div>bar</div>' }
 
 export default new Router({
   mode: 'history',
+  base: 'vue-express',
+  fallback: false,
+  scrollBehavior: () => ({ y: 0 }),
   routes: [
     { path: '/', component: LandingPage },
     { path: '/foo', component: LandingPage },
