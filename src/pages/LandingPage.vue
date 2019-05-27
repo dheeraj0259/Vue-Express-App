@@ -1,7 +1,6 @@
 <template>
   <div class="main-card">
-    <v-hover>
-      <v-card class="mx-auto" color="grey lighten-4" max-width="600">
+      <v-card class="mx-auto main-card" color="grey lighten-4" max-width="600">
         <v-card-text
           class="pt-4 font-weight-light grey--text title"
           style="position: relative;"
@@ -11,7 +10,6 @@
           style="position: relative;"
         >Vue Express Tutorial</v-card-text>
       </v-card>
-    </v-hover>
   </div>
 </template>
 
@@ -23,6 +21,6 @@ export default {
 
 <style>
 .main-card {
-  margin-top: 76px;
+  margin-top: 30px;
 }
 </style>
