@@ -1,23 +1,15 @@
 <template>
   <div class="main-card">
     <v-hover>
-      <v-card
-        class="mx-auto"
-        color="grey lighten-4"
-        max-width="600"
-      >
+      <v-card class="mx-auto" color="grey lighten-4" max-width="600">
         <v-card-text
           class="pt-4 font-weight-light grey--text title"
           style="position: relative;"
-        >
-            Application Name:
-        </v-card-text>
-          <v-card-text
+        >Application Name:</v-card-text>
+        <v-card-text
           class="pt-4 display-1 font-weight-light orange--text text-xs-center"
           style="position: relative;"
-        >
-        Vue Express Tutorial
-          </v-card-text>
+        >Vue Express Tutorial</v-card-text>
       </v-card>
     </v-hover>
   </div>
@@ -25,8 +17,8 @@
 
 <script>
 export default {
-  name: 'LandingPage',
-}
+  name: "LandingPage"
+};
 </script>
 
 <style>
