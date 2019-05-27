@@ -13,7 +13,10 @@ module.exports = {
       'standard'
     ],
     plugins: [
-      'vue'
+      'vue',
+      'arca',
+      'import',
+      'compat'
     ],
     "env": {
       "browser": true,
@@ -32,7 +35,6 @@ module.exports = {
     'comma-dangle':                      ['error', 'always-multiline'],
     'strict':                            ['error', 'global'],
     'arca/import-align':                 2,
-    'import/no-extraneous-dependencies': ["error", {"devDependencies": true}],
     'no-multi-spaces':                   [
       'error', {
         exceptions: {
