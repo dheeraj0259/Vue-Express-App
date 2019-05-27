@@ -13,10 +13,10 @@
             Application Name:
         </v-card-text>
           <v-card-text
-          class="pt-4 display-1 font-weight-light orange--text txt"
+          class="pt-4 display-1 font-weight-light orange--text text-xs-center"
           style="position: relative;"
         >
-        Commercial Attribute Management
+        Vue Express Tutorial
           </v-card-text>
       </v-card>
     </v-hover>
