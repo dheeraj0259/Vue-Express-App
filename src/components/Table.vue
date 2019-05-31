@@ -12,32 +12,20 @@
         <td>
           <v-checkbox :input-value="props.selected" primary hide-details></v-checkbox>
         </td>
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
-        <td class="text-xs-right">{{ props.item.iron }}</td>
+        <td v-for="header in headers" :key="header.name">{{ props.item[header.value] }}</td>
       </tr>
     </template>
   </v-data-table>
 </template>
 
 <script>
-import { tableItems } from "../constants/tableData"
+import { tableItems } from "../constants/tableData";
 export default {
   name: "table",
   data: () => ({
-    pagination: {
-      sortBy: "name"
-    },
     selected: [],
     headers: [
-      {
-        text: "Dessert (100g serving)",
-        align: "left",
-        value: "name"
-      },
+      { text: "Dessert (100g serving)", value: "name" },
       { text: "Calories", value: "calories" },
       { text: "Fat (g)", value: "fat" },
       { text: "Carbs (g)", value: "carbs" },
