@@ -2,7 +2,7 @@
   <v-data-table
     v-model="selected"
     :headers="headers"
-    :items="desserts"
+    :items="tableItems"
     select-all
     item-key="name"
     class="elevation-4"
@@ -21,7 +21,12 @@
 <script>
 import { tableItems } from "../constants/tableData";
 export default {
-  name: "table",
+  name: "Table",
+  props: {
+    tableItems: {
+      type: Array
+    }
+  },
   data: () => ({
     selected: [],
     headers: [
@@ -31,8 +36,7 @@ export default {
       { text: "Carbs (g)", value: "carbs" },
       { text: "Protein (g)", value: "protein" },
       { text: "Iron (%)", value: "iron" }
-    ],
-    desserts: tableItems
+    ]
   })
 };
 </script>

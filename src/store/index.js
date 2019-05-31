@@ -8,7 +8,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state:     {
-        isLoaded: false
+        isLoaded: false,
+        tableItems: []
     },
     mutations,
     actions
