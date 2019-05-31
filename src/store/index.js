@@ -1,20 +1,15 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+import actions from "./actions"
+import mutations from "./mutations"
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state:     {
         isLoaded: false
     },
-    mutations: {
-        isLoaded (state, payload) {
-            Vue.set(state, 'isLoaded', payload)
-          }
-    },
-    actions:   {
-        isLoaded (store, payload) {
-            store.commit('isLoaded', payload)
-          }
-    },
+    mutations,
+    actions
 });
