@@ -23,20 +23,15 @@ import { tableItems } from "../constants/tableData";
 export default {
   name: "Table",
   props: {
+    headers: {
+      type: Array
+    },
     tableItems: {
       type: Array
     }
   },
   data: () => ({
-    selected: [],
-    headers: [
-      { text: "Dessert (100g serving)", value: "name" },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" }
-    ]
+    selected: []
   })
 };
 </script>

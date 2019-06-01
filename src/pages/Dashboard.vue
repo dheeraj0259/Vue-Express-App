@@ -1,7 +1,10 @@
 <template>
+
 <Table
-:tableItems ="dashboardTableItems"
+  :headers="tableHeaders"
+  :tableItems ="dashboardTableItems"
  />
+ 
 </template>
 
 <script>
@@ -11,6 +14,14 @@ export default {
   name: "dashboard",
   components: {Table},
   data: () => ({
+      tableHeaders: [
+      { text: "Dessert (100g serving)", value: "name" },
+      { text: "Calories", value: "calories" },
+      { text: "Fat (g)", value: "fat" },
+      { text: "Carbs (g)", value: "carbs" },
+      { text: "Protein (g)", value: "protein" },
+      { text: "Iron (%)", value: "iron" }
+    ],
       dashboardTableItems: store.state.tableItems
   }),
   beforeCreate(){
