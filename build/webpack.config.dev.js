@@ -24,6 +24,14 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use:  "url-loader?limit=10000&mimetype=application/font-woff",
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use:  "file-loader",
+            },
+            {
                 test: /\.css$/,
                 use:  [
                     "vue-style-loader",
@@ -41,7 +49,7 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
-        new webpack.DefinePlugin({"process.env": {NODE_ENV: JSON.stringify("development")}}),
+        new webpack.DefinePlugin({ "process.env": { NODE_ENV: JSON.stringify("development") } }),
         new webpack.IgnorePlugin(/regenerator|nodent|js-beautify/, /ajv/),
         new webpack.optimize.OccurrenceOrderPlugin(),
     ],
@@ -51,8 +59,7 @@ module.exports = {
             ".json",
             ".vue",
         ],
-        alias: {"vue$": "vue/dist/vue.esm.js", // 'vue/dist/vue.common.js' for webpack 1
-        },
+        alias: { "vue$": "vue/dist/vue.esm.js" },
     },
     externals: [
         { "./cptable": "var cptable" },

@@ -26,12 +26,14 @@
     "eslint-plugin-arca": "^0.8.1",
     "eslint-plugin-compat": "^3.1.1",
     "express": "^4.16.4",
+    "file-loader": "^3.0.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "cross-env": "^5.2.0",
@@ -48,6 +50,7 @@
     "path": "^0.12.7",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "url-loader": "^1.1.2",
     "vue-loader": "^15.7.0",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.10",
