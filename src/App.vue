@@ -1,11 +1,14 @@
 <template>
   <v-app>
+    <!-- Loading bar -->
     <div v-if="this.$store.state.isLoaded === false" class="text-xs-center align-center">
       <v-progress-circular indeterminate color="amber"></v-progress-circular>
     </div>
+    <!--Route redirect components -->
     <v-container grid-list-md>
       <router-view/>
     </v-container>
+    <!-- Scroll- Up button -->
     <v-btn
       dark
       absolute
@@ -45,9 +48,9 @@ export default {
 
 <style scoped>
 .scroll-up {
-    position: fixed;
-    bottom: 15px;
-    right: 0px; 
+  position: fixed;
+  bottom: 15px;
+  right: 0px;
 }
 .v-progress-circular {
   margin: 15rem;
