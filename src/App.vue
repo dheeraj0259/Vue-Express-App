@@ -9,6 +9,7 @@
       <router-view/>
     </v-container>
     <!-- Scroll- Up button -->
+    <v-fab-transition>
     <v-btn
       v-show="scrollOffset > 280"
       dark
@@ -20,6 +21,7 @@
     >
       <v-icon>keyboard_arrow_up</v-icon>
     </v-btn>
+    </v-fab-transition>
   </v-app>
 </template>
 

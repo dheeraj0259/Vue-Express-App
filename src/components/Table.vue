@@ -51,6 +51,7 @@
               :headers="headers"
               :items="tableItems"
               :pagination.sync="pagination"
+              :rows-per-page-items= "[ 30, 5, 10, 20]"
               select-all
               item-key="name"
             >
