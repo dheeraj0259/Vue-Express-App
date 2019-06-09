@@ -1,5 +1,7 @@
 <template>
-  <Table :headers="tableHeaders" :tableItems="dashboardTableItems" headerColor="blue"/>
+  <div>
+    <Table :headers="tableHeaders" :tableItems="dashboardTableItems" headerColor="blue"/>
+  </div>
 </template>
 
 <script>
