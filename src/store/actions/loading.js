@@ -1,7 +1,5 @@
 const isLoaded = (store, payload) => {
-    store.commit('isLoaded', payload)
-  }
+    store.commit("isLoaded", payload);
+};
 
-  module.exports = {
-      isLoaded
-  }
+module.exports = { isLoaded };

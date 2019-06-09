@@ -1,7 +1,5 @@
-const  isLoaded = (state, payload) => {
-    state.isLoaded = payload
-  }
+const isLoaded = (state, payload) => {
+    state.isLoaded = payload;
+};
 
-  module.exports = {
-    isLoaded
-  }
+module.exports = { isLoaded };
