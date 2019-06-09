@@ -10,17 +10,17 @@
     </v-container>
     <!-- Scroll- Up button -->
     <v-fab-transition>
-    <v-btn
-      v-show="scrollOffset > 280"
-      dark
-      absolute
-      class="mx-5 scroll-up"
-      fab
-      @click="$vuetify.goTo(target, options)"
-      color="primary"
-    >
-      <v-icon>keyboard_arrow_up</v-icon>
-    </v-btn>
+      <v-btn
+        v-show="scrollOffset > 280"
+        dark
+        absolute
+        class="mx-5 scroll-up"
+        fab
+        @click="$vuetify.goTo(target, options)"
+        color="primary"
+      >
+        <v-icon>keyboard_arrow_up</v-icon>
+      </v-btn>
     </v-fab-transition>
   </v-app>
 </template>
