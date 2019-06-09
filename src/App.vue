@@ -5,11 +5,12 @@
       <v-progress-circular indeterminate color="amber"></v-progress-circular>
     </div>
     <!--Route redirect components -->
-    <v-container grid-list-md>
+    <v-container grid-list-md v-scroll="onScroll">
       <router-view/>
     </v-container>
     <!-- Scroll- Up button -->
     <v-btn
+      v-show="scrollOffset > 280"
       dark
       absolute
       class="mx-5 scroll-up"
@@ -27,6 +28,9 @@ import { mapActions, mapState } from "vuex";
 
 export default {
   name: "app",
+  data: () => ({
+    scrollOffset: 0
+  }),
   computed: {
     target() {
       const value = 0;
@@ -42,6 +46,11 @@ export default {
   },
   mounted() {
     this.$store.dispatch("isLoaded", true);
+  },
+  methods: {
+    onScroll(e) {
+      this.scrollOffset = e.path[1].pageYOffset;
+    }
   }
 };
 </script>
