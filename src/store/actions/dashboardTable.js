@@ -1,7 +1,5 @@
-const getTableItems = (store) => {
-    store.commit('setTableItems')
-  }
+const getTableItems = store => {
+    store.commit("setTableItems");
+};
 
-  module.exports = {
-    getTableItems
-  }
+module.exports = { getTableItems };

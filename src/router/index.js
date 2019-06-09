@@ -1,8 +1,8 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue         from "vue";
+import Router      from "vue-router";
 
 import LandingPage from "../pages/LandingPage.vue";
-import Dashboard from "../pages/Dashboard.vue"
+import Dashboard   from "../pages/Dashboard.vue";
 
 Vue.use(Router);
 
