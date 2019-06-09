@@ -1,15 +1,21 @@
 <template>
-  <div>
+  <MaterialCard
+    color="blue"
+    title="Dessert and Nutrition"
+    :text="`Total no of desserts: ${dashboardTableItems.length}`"
+  >
     <Table :headers="tableHeaders" :tableItems="dashboardTableItems" headerColor="blue"/>
-  </div>
+  </MaterialCard>
 </template>
 
 <script>
 import Table from "../components/Table";
+import MaterialCard from "../components/MaterialCard";
+
 import store from "../store";
 export default {
   name: "Dashboard",
-  components: { Table },
+  components: { Table, MaterialCard },
   data: () => ({
     tableHeaders: [
       {
