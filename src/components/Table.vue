@@ -25,7 +25,7 @@
             :class="[pagination.descending ? 'desc' : 'asc', header.value === pagination.sortBy ? 'font-weight-bold' : 'font-weight-light', 'subheading text--darken-3 ' + headerColor + '--text']"
             @click="changeSort(header.value)"
           >
-            <v-icon small :color="headerColor"> {{ header.icon }}</v-icon>
+            <v-icon small :color="headerColor + ' darken-1'"> {{ header.icon }}</v-icon>
             {{ header.text }}
           </th>
         </tr>
