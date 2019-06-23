@@ -60,6 +60,7 @@
       :selectedItems="editDialogItems"
       @toggleEditDialog="toggleEditDialog"
       @closeEditDialog="closeEditDialog"
+      @saveSelectedItem="saveSelectedItem"
     />
   </div>
 </template>
@@ -109,6 +110,17 @@ export default {
       this.editDialog = !this.editDialog;
     },
     closeEditDialog(newSelectedItems) {
+      if (newSelectedItems.length > 0) {
+        this.editDialogItems = newSelectedItems;
+      } else {
+        this.editDialog = !this.editDialog;
+      }
+    },
+    saveSelectedItem(updatedItem, newSelectedItems) {
+      const selectedIndex = this.selectedTableItems.findIndex(
+        item => item.name === updatedItem.name
+      );
+      this.selectedTableItems[selectedIndex] = updatedItem;
       if (newSelectedItems.length > 0) {
         this.editDialogItems = newSelectedItems;
       } else {
