@@ -18,7 +18,7 @@
         <v-layout align-end justify-center row>
           <v-fab-transition>
             <v-btn
-              v-show="selectedTableItems.length > 0 && selectedTableItems.length<2"
+              v-show="selectedTableItems.length > 0"
               dark
               absolute
               class="edit-button-fixed"
@@ -55,17 +55,19 @@
         </v-layout>
       </v-flex>
     </v-layout>
-    <EditDialog 
-    :dialog="editDialog"
-    @toggleEditDialog="toggleEditDialog"
-     />
+    <EditDialog
+      :dialog="editDialog"
+      :selectedItems="editDialogItems"
+      @toggleEditDialog="toggleEditDialog"
+      @closeEditDialog="closeEditDialog"
+    />
   </div>
 </template>
 
 <script>
 import Table from "../components/Table";
 import MaterialCard from "../components/MaterialCard";
-import EditDialog from "../components/EditDialog"
+import EditDialog from "../components/EditDialog";
 
 import store from "../store";
 export default {
@@ -86,7 +88,8 @@ export default {
     ],
     dashboardTableItems: store.state.tableItems,
     selectedTableItems: [],
-    editDialog: false,
+    editDialogItems: [],
+    editDialog: false
   }),
   beforeCreate() {
     this.$store.dispatch("getTableItems");
@@ -102,7 +105,15 @@ export default {
       );
     },
     toggleEditDialog() {
+      this.editDialogItems = this.selectedTableItems;
       this.editDialog = !this.editDialog;
+    },
+    closeEditDialog(newSelectedItems) {
+      if (newSelectedItems.length > 0) {
+        this.editDialogItems = newSelectedItems;
+      } else {
+        this.editDialog = !this.editDialog;
+      }
     }
   }
 };
