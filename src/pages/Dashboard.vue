@@ -24,6 +24,7 @@
               class="edit-button-fixed"
               fab
               color="primary"
+              @click="toggleEditDialog"
             >
               <v-badge color="deep-purple lighten-4">
                 <template v-slot:badge>
@@ -54,17 +55,22 @@
         </v-layout>
       </v-flex>
     </v-layout>
+    <EditDialog 
+    :dialog="editDialog"
+    @toggleEditDialog="toggleEditDialog"
+     />
   </div>
 </template>
 
 <script>
 import Table from "../components/Table";
 import MaterialCard from "../components/MaterialCard";
+import EditDialog from "../components/EditDialog"
 
 import store from "../store";
 export default {
   name: "Dashboard",
-  components: { Table, MaterialCard },
+  components: { Table, MaterialCard, EditDialog },
   data: () => ({
     tableHeaders: [
       {
@@ -79,7 +85,8 @@ export default {
       { text: "Iron (%)", value: "iron", icon: "fas fa-bread-slice" }
     ],
     dashboardTableItems: store.state.tableItems,
-    selectedTableItems: []
+    selectedTableItems: [],
+    editDialog: false,
   }),
   beforeCreate() {
     this.$store.dispatch("getTableItems");
@@ -93,6 +100,9 @@ export default {
       this.dashboardTableItems = this.dashboardTableItems.filter(
         item => !selectedNames.includes(item.name)
       );
+    },
+    toggleEditDialog() {
+      this.editDialog = !this.editDialog;
     }
   }
 };
