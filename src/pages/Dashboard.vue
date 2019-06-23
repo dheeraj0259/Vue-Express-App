@@ -1,11 +1,60 @@
 <template>
-  <MaterialCard
-    color="blue"
-    title="Dessert and Nutrition"
-    :text="`Total no of desserts: ${dashboardTableItems.length}`"
-  >
-    <Table :headers="tableHeaders" :tableItems="dashboardTableItems" headerColor="blue"/>
-  </MaterialCard>
+  <div>
+    <MaterialCard
+      color="blue"
+      title="Dessert and Nutrition"
+      :text="`Total no of desserts: ${dashboardTableItems.length}`"
+    >
+      <Table
+        :headers="tableHeaders"
+        :tableItems="dashboardTableItems"
+        headerColor="blue"
+        @saveSelected="saveSelected"
+      />
+    </MaterialCard>
+    <!-- Action Buttons -->
+    <v-layout column>
+      <v-flex xs12>
+        <v-layout align-end justify-center row>
+          <v-fab-transition>
+            <v-btn
+              v-show="selectedTableItems.length > 0 && selectedTableItems.length<2"
+              dark
+              absolute
+              class="edit-button-fixed"
+              fab
+              color="primary"
+            >
+              <v-badge color="deep-purple lighten-4">
+                <template v-slot:badge>
+                  <span style="color: black;">{{ selectedTableItems.length }}</span>
+                </template>
+                <v-icon>edit</v-icon>
+              </v-badge>
+            </v-btn>
+          </v-fab-transition>
+          <v-fab-transition>
+            <v-btn
+              v-show="selectedTableItems.length > 0"
+              dark
+              absolute
+              class="delete-button-fixed"
+              fab
+              color="deep-orange accent-4"
+              @click="deleteItem"
+            >
+              <v-badge color="orange lighten-3">
+                <template v-slot:badge>
+                  <span style="color: black;">{{ selectedTableItems.length }}</span>
+                </template>
+                <v-icon>delete</v-icon>
+              </v-badge>
+            </v-btn>
+          </v-fab-transition>
+        </v-layout>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
@@ -29,10 +78,35 @@ export default {
       { text: "Protein (g)", value: "protein", icon: "fas fa-egg" },
       { text: "Iron (%)", value: "iron", icon: "fas fa-bread-slice" }
     ],
-    dashboardTableItems: store.state.tableItems
+    dashboardTableItems: store.state.tableItems,
+    selectedTableItems: []
   }),
   beforeCreate() {
     this.$store.dispatch("getTableItems");
+  },
+  methods: {
+    saveSelected(selectedValue) {
+      this.selectedTableItems = selectedValue;
+    },
+    deleteItem() {
+      const selectedNames = this.selectedTableItems.map(item => item.name);
+      this.dashboardTableItems = this.dashboardTableItems.filter(
+        item => !selectedNames.includes(item.name)
+      );
+    }
   }
 };
 </script>
+
+
+<style scoped>
+.edit-button-fixed {
+  position: fixed;
+  bottom: 15px;
+}
+.delete-button-fixed {
+  position: fixed;
+  bottom: 15px;
+  margin-left: 100px;
+}
+</style>
