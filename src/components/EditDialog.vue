@@ -67,5 +67,6 @@ export default {
 <style>
 .item {
   margin-right: 10px;
+  background-color: #d1dce4 !important;
 }
 </style>
