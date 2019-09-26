@@ -45,9 +45,6 @@
 
 <script>
 export default {
-  name: "CloneStep2",
-  data: () => ({
-    dialog: false
-  })
+  name: "CloneStep2"
 };
 </script>
