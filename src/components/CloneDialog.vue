@@ -1,49 +1,56 @@
 <template>
-  <v-dialog v-model="dialog" persistent>
+  <v-dialog v-model="dialog" persistent width="1000">
     <v-stepper v-model="e1">
       <v-stepper-header>
-        <v-stepper-step :complete="e1 > 1" step="1">Name of step 1</v-stepper-step>
+        <v-stepper-step :complete="e1 > 1" step="1">Assign Product to Brands</v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step :complete="e1 > 2" step="2">Name of step 2</v-stepper-step>
+        <v-stepper-step :complete="e1 > 2" step="2">Fill the Information</v-stepper-step>
 
         <v-divider></v-divider>
 
-        <v-stepper-step step="3">Name of step 3</v-stepper-step>
+        <v-stepper-step step="3">Review and Submit</v-stepper-step>
       </v-stepper-header>
 
       <v-stepper-items>
         <v-stepper-content step="1">
-          <v-card class="mb-5" color="grey lighten-1" height="200px"></v-card>
+          <CloneStep1 />
 
-          <v-btn color="primary" @click="e1 = 2">Continue</v-btn>
-
-          <v-btn flat @click="closeDialog">Cancel</v-btn>
+          <v-flex style="display: flex; justify-content: flex-end">
+            <v-btn color="primary" right @click="e1 = 2">Continue</v-btn>
+            <v-btn flat right @click="closeDialog">Cancel</v-btn>
+          </v-flex>
         </v-stepper-content>
 
         <v-stepper-content step="2">
-          <v-card class="mb-5" color="grey lighten-1" height="200px"></v-card>
+          <CloneStep2 />
 
-          <v-btn color="primary" @click="e1 = 3">Continue</v-btn>
-
-          <v-btn flat @click="closeDialog">Cancel</v-btn>
+          <v-flex style="display: flex; justify-content: flex-end">
+            <v-btn color="primary" right @click="e1 = 3">Continue</v-btn>
+            <v-btn flat right @click="closeDialog">Cancel</v-btn>
+          </v-flex>
         </v-stepper-content>
 
         <v-stepper-content step="3">
-          <v-card class="mb-5" color="grey lighten-1" height="200px"></v-card>
-
-          <v-btn color="primary" @click="e1 = 1">Continue</v-btn>
-
-          <v-btn flat @click="closeDialog">Cancel</v-btn>
+          <CloneStep3 />
+          
+          <v-flex style="display: flex; justify-content: flex-end">
+            <v-btn color="primary" right @click="e1 = 1">Continue</v-btn>
+            <v-btn flat right @click="closeDialog">Cancel</v-btn>
+          </v-flex>
         </v-stepper-content>
       </v-stepper-items>
     </v-stepper>
   </v-dialog>
 </template>
 <script>
+import CloneStep1 from "../components/CloneStep1";
+import CloneStep2 from "../components/CloneStep2";
+import CloneStep3 from "../components/CloneStep3";
 export default {
   name: "CloneDialog",
+  components: { CloneStep1, CloneStep2, CloneStep3 },
   props: { dialog: Boolean },
   data: () => ({
     e1: 0
