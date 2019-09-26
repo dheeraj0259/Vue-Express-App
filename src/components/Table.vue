@@ -47,7 +47,7 @@
             <template v-slot:items="props">
               <tr :active="props.selected" @click="props.selected = !props.selected">
                 <td>
-                  <v-checkbox :input-value="props.selected" primary hide-details/>
+                  <v-checkbox :input-value="props.selected" primary hide-details />
                 </td>
                 <td
                   v-for="header in headers"
@@ -97,7 +97,7 @@ export default {
         this.pagination.sortBy = column;
         this.pagination.descending = false;
       }
-    },
+    }
   },
   watch: {
     selected: function(newValue) {
