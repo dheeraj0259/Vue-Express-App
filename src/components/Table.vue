@@ -18,7 +18,7 @@
             :rows-per-page-items="[ 30, 5, 10, 20]"
             select-all
             item-key="name"
-          >
+          > 
             <!-- Header -->
             <template v-slot:headers="props">
               <tr>
