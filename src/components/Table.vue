@@ -71,7 +71,6 @@
 </template>
 
 <script>
-import { networkInterfaces } from "os";
 export default {
   name: "Table",
   props: {
