@@ -80,7 +80,10 @@
       @closeEditDialog="closeEditDialog"
       @saveSelectedItem="saveSelectedItem"
     />
-    <CloneDialog :dialog="cloneDialog" @closeCloneDialog="closeCloneDialog" />
+    <CloneDialog 
+    :dialog="cloneDialog"
+    @closeCloneDialog="closeCloneDialog"
+    />
   </div>
 </template>
 
@@ -141,7 +144,7 @@ export default {
       }
     },
     closeCloneDialog() {
-      this.cloneDialog = !this.cloneDialog;
+    this.cloneDialog = !this.cloneDialog;
     },
     saveSelectedItem(updatedItem, newSelectedItems) {
       const selectedIndex = this.selectedTableItems.findIndex(
