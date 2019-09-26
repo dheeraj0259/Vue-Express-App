@@ -52,6 +52,24 @@
               </v-badge>
             </v-btn>
           </v-fab-transition>
+          <v-fab-transition>
+            <v-btn
+              v-show="selectedTableItems.length > 0"
+              dark
+              absolute
+              class="clone-button-fixed"
+              fab
+              color="primary"
+              @click="toggleCloneDialog"
+            >
+              <v-badge color="deep-purple lighten-4">
+                <template v-slot:badge>
+                  <span style="color: black;">{{ selectedTableItems.length }}</span>
+                </template>
+                <v-icon>file_copy</v-icon>
+              </v-badge>
+            </v-btn>
+          </v-fab-transition>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -90,7 +108,8 @@ export default {
     dashboardTableItems: store.state.tableItems,
     selectedTableItems: [],
     editDialogItems: [],
-    editDialog: false
+    editDialog: false,
+    cloneDialog: false
   }),
   beforeCreate() {
     this.$store.dispatch("getTableItems");
@@ -108,6 +127,9 @@ export default {
     toggleEditDialog() {
       this.editDialogItems = this.selectedTableItems;
       this.editDialog = !this.editDialog;
+    },
+    toggleCloneDialog() {
+      this.cloneDialog = !this.cloneDialog;
     },
     closeEditDialog(newSelectedItems) {
       if (newSelectedItems.length > 0) {
@@ -141,5 +163,10 @@ export default {
   position: fixed;
   bottom: 15px;
   margin-left: 100px;
+}
+.clone-button-fixed {
+  position: fixed;
+  bottom: 15px;
+  margin-left: 200px;
 }
 </style>
