@@ -80,6 +80,7 @@
       @closeEditDialog="closeEditDialog"
       @saveSelectedItem="saveSelectedItem"
     />
+    <CloneDialog :dialog="cloneDialog" @closeCloneDialog="closeCloneDialog" />
   </div>
 </template>
 
@@ -87,11 +88,12 @@
 import Table from "../components/Table";
 import MaterialCard from "../components/MaterialCard";
 import EditDialog from "../components/EditDialog";
+import CloneDialog from "../components/CloneDialog";
 
 import store from "../store";
 export default {
   name: "Dashboard",
-  components: { Table, MaterialCard, EditDialog },
+  components: { Table, MaterialCard, EditDialog, CloneDialog },
   data: () => ({
     tableHeaders: [
       {
@@ -137,6 +139,9 @@ export default {
       } else {
         this.editDialog = !this.editDialog;
       }
+    },
+    closeCloneDialog() {
+      this.cloneDialog = !this.cloneDialog;
     },
     saveSelectedItem(updatedItem, newSelectedItems) {
       const selectedIndex = this.selectedTableItems.findIndex(
