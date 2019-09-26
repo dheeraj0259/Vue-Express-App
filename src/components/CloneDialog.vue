@@ -57,6 +57,7 @@ export default {
   methods: {
     closeDialog: function() {
       this.$emit("closeCloneDialog");
+      this.e1 = 1;
     }
   }
 };
