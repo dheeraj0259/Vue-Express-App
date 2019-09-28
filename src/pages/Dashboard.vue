@@ -7,15 +7,19 @@
     >
       <Table
         :headers="tableHeaders"
-        :tableItems="dashboardTableItems"
-        headerColor="blue"
+        :table-items="dashboardTableItems"
+        header-color="blue"
         @saveSelected="saveSelected"
       />
     </MaterialCard>
     <!-- Action Buttons -->
     <v-layout column>
       <v-flex xs12>
-        <v-layout align-end justify-center row>
+        <v-layout
+          align-end
+          justify-center
+          row
+        >
           <v-fab-transition>
             <v-btn
               v-show="selectedTableItems.length > 0"
@@ -75,92 +79,91 @@
     </v-layout>
     <EditDialog
       :dialog="editDialog"
-      :selectedItems="editDialogItems"
+      :selected-items="editDialogItems"
       @toggleEditDialog="toggleEditDialog"
       @closeEditDialog="closeEditDialog"
       @saveSelectedItem="saveSelectedItem"
     />
-    <CloneDialog 
-    :dialog="cloneDialog"
-    @closeCloneDialog="closeCloneDialog"
+    <CloneDialog
+      :dialog="cloneDialog"
+      @closeCloneDialog="closeCloneDialog"
     />
   </div>
 </template>
 
 <script>
-import Table from "../components/Table";
+import Table        from "../components/Table";
 import MaterialCard from "../components/MaterialCard";
-import EditDialog from "../components/EditDialog";
-import CloneDialog from "../components/CloneDialog";
+import EditDialog   from "../components/EditDialog";
+import CloneDialog  from "../components/CloneDialog";
 
-import store from "../store";
+import store        from "../store";
 export default {
-  name: "Dashboard",
-  components: { Table, MaterialCard, EditDialog, CloneDialog },
-  data: () => ({
-    tableHeaders: [
-      {
-        text: "Dessert (100g serving)",
-        value: "name",
-        icon: "fas fa-ice-cream"
-      },
-      { text: "Calories", value: "calories", icon: "fas fa-pizza-slice" },
-      { text: "Fat (g)", value: "fat", icon: "fas fa-hamburger" },
-      { text: "Carbs (g)", value: "carbs", icon: "fas fa-carrot" },
-      { text: "Protein (g)", value: "protein", icon: "fas fa-egg" },
-      { text: "Iron (%)", value: "iron", icon: "fas fa-bread-slice" }
-    ],
-    dashboardTableItems: store.state.tableItems,
-    selectedTableItems: [],
-    editDialogItems: [],
-    editDialog: false,
-    cloneDialog: false
-  }),
-  beforeCreate() {
-    this.$store.dispatch("getTableItems");
-  },
-  methods: {
-    saveSelected(selectedValue) {
-      this.selectedTableItems = selectedValue;
+    name:       "Dashboard",
+    components: { Table, MaterialCard, EditDialog, CloneDialog },
+    data:       () => ({
+        tableHeaders: [
+            {
+                text:  "Dessert (100g serving)",
+                value: "name",
+                icon:  "fas fa-ice-cream",
+            },
+            { text: "Calories", value: "calories", icon: "fas fa-pizza-slice" },
+            { text: "Fat (g)", value: "fat", icon: "fas fa-hamburger" },
+            { text: "Carbs (g)", value: "carbs", icon: "fas fa-carrot" },
+            { text: "Protein (g)", value: "protein", icon: "fas fa-egg" },
+            { text: "Iron (%)", value: "iron", icon: "fas fa-bread-slice" },
+        ],
+        dashboardTableItems: store.state.tableItems,
+        selectedTableItems:  [],
+        editDialogItems:     [],
+        editDialog:          false,
+        cloneDialog:         false,
+    }),
+    beforeCreate () {
+        this.$store.dispatch("getTableItems");
     },
-    deleteItem() {
-      const selectedNames = this.selectedTableItems.map(item => item.name);
-      this.dashboardTableItems = this.dashboardTableItems.filter(
-        item => !selectedNames.includes(item.name)
-      );
+    methods: {
+        saveSelected (selectedValue) {
+            this.selectedTableItems = selectedValue;
+        },
+        deleteItem () {
+            const selectedNames = this.selectedTableItems.map(item => item.name);
+            this.dashboardTableItems = this.dashboardTableItems.filter(
+                item => !selectedNames.includes(item.name)
+            );
+        },
+        toggleEditDialog () {
+            this.editDialogItems = this.selectedTableItems;
+            this.editDialog = !this.editDialog;
+        },
+        toggleCloneDialog () {
+            this.cloneDialog = !this.cloneDialog;
+        },
+        closeEditDialog (newSelectedItems) {
+            if (newSelectedItems.length > 0) {
+                this.editDialogItems = newSelectedItems;
+            } else {
+                this.editDialog = !this.editDialog;
+            }
+        },
+        closeCloneDialog () {
+            this.cloneDialog = !this.cloneDialog;
+        },
+        saveSelectedItem (updatedItem, newSelectedItems) {
+            const selectedIndex = this.selectedTableItems.findIndex(
+                item => item.name === updatedItem.name
+            );
+            this.selectedTableItems[selectedIndex] = updatedItem;
+            if (newSelectedItems.length > 0) {
+                this.editDialogItems = newSelectedItems;
+            } else {
+                this.editDialog = !this.editDialog;
+            }
+        },
     },
-    toggleEditDialog() {
-      this.editDialogItems = this.selectedTableItems;
-      this.editDialog = !this.editDialog;
-    },
-    toggleCloneDialog() {
-      this.cloneDialog = !this.cloneDialog;
-    },
-    closeEditDialog(newSelectedItems) {
-      if (newSelectedItems.length > 0) {
-        this.editDialogItems = newSelectedItems;
-      } else {
-        this.editDialog = !this.editDialog;
-      }
-    },
-    closeCloneDialog() {
-    this.cloneDialog = !this.cloneDialog;
-    },
-    saveSelectedItem(updatedItem, newSelectedItems) {
-      const selectedIndex = this.selectedTableItems.findIndex(
-        item => item.name === updatedItem.name
-      );
-      this.selectedTableItems[selectedIndex] = updatedItem;
-      if (newSelectedItems.length > 0) {
-        this.editDialogItems = newSelectedItems;
-      } else {
-        this.editDialog = !this.editDialog;
-      }
-    }
-  }
 };
 </script>
-
 
 <style scoped>
 .edit-button-fixed {

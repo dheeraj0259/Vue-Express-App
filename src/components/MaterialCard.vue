@@ -22,7 +22,10 @@
           class="category font-weight-light"
           v-text="text"
         />
-        <slot name="tab" style="float: right"></slot>
+        <slot
+          name="tab"
+          style="float: right"
+        />
       </span>
     </v-card>
 
@@ -34,7 +37,7 @@
 
 <script>
 export default {
-    props:        {
+    props: {
         color: {
             type:    String,
             default: "secondary",

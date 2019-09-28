@@ -1,12 +1,21 @@
 <template>
   <v-app>
     <!-- Loading bar -->
-    <div v-if="this.$store.state.isLoaded === false" class="text-xs-center align-center">
-      <v-progress-circular indeterminate color="amber"></v-progress-circular>
+    <div
+      v-if="this.$store.state.isLoaded === false"
+      class="text-xs-center align-center"
+    >
+      <v-progress-circular
+        indeterminate
+        color="amber"
+      />
     </div>
     <!--Route redirect components -->
-    <v-container grid-list-md v-scroll="onScroll">
-      <router-view/>
+    <v-container
+      v-scroll="onScroll"
+      grid-list-md
+    >
+      <router-view />
     </v-container>
     <!-- Scroll- Up button -->
     <v-fab-transition>
@@ -16,8 +25,8 @@
         absolute
         class="mx-5 scroll-up"
         fab
-        @click="$vuetify.goTo(target, options)"
         color="primary"
+        @click="$vuetify.goTo(target, options)"
       >
         <v-icon>keyboard_arrow_up</v-icon>
       </v-btn>
@@ -29,31 +38,29 @@
 import { mapActions, mapState } from "vuex";
 
 export default {
-  name: "app",
-  data: () => ({
-    scrollOffset: 0
-  }),
-  computed: {
-    target() {
-      const value = 0;
-      return value;
+    name:     "App",
+    data:     () => ({ scrollOffset: 0 }),
+    computed: {
+        target () {
+            const value = 0;
+            return value;
+        },
+        options () {
+            return {
+                duration: 195,
+                offset:   0,
+                easing:   "easeInOutCubic",
+            };
+        },
     },
-    options() {
-      return {
-        duration: 195,
-        offset: 0,
-        easing: "easeInOutCubic"
-      };
-    }
-  },
-  mounted() {
-    this.$store.dispatch("isLoaded", true);
-  },
-  methods: {
-    onScroll(e) {
-      this.scrollOffset = e.path[1].pageYOffset;
-    }
-  }
+    mounted () {
+        this.$store.dispatch("isLoaded", true);
+    },
+    methods: {
+        onScroll (e) {
+            this.scrollOffset = e.path[1].pageYOffset;
+        },
+    },
 };
 </script>
 
